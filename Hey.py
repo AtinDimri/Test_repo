@@ -1,3 +1,4 @@
-a=3
-b=4
-print(a+b)
+a=7
+b=8
+c=4
+print(a+b+c)
