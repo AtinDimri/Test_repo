@@ -5,11 +5,14 @@ on:
     branches: [ main ]
 
 jobs:
-  call-central-workflow:
-    uses: AtinDimri/github-commit-tracker/.github/workflows/commit-tracker.yml@main
-    with:
-      repo_full_name: ${{ github.repository }}
-      commit_sha: ${{ github.sha }}
-    secrets:
-      GH_PAT: ${{ secrets.GH_PAT }}
-      APPS_SCRIPT_WEBAPP_URL: ${{ secrets.APPS_SCRIPT_WEBAPP_URL }}
+  call-central-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run central commit tracker
+        uses: AtinDimri/github-commit-tracker@main
+        with:
+          repo_full_name: ${{ github.repository }}
+          commit_sha: ${{ github.sha }}
+          gh_pat: ${{ secrets.GH_PAT }}
+          apps_script_webapp_url: ${{ secrets.APPS_SCRIPT_WEBAPP_URL }}
