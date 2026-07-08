@@ -1,0 +1,15 @@
+name: Commit Tracker Caller
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  call-central-workflow:
+    uses: AtinDimri/github-commit-tracker/.github/workflows/commit-tracker.yml@main
+    with:
+      repo_full_name: ${{ github.repository }}
+      commit_sha: ${{ github.sha }}
+    secrets:
+      GH_PAT: ${{ secrets.GH_PAT }}
+      APPS_SCRIPT_WEBAPP_URL: ${{ secrets.APPS_SCRIPT_WEBAPP_URL }}
